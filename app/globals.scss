@@ -1,0 +1,171 @@
+// Variables
+$leaf-dark-green: #005600;
+$leaf-medium-green: #309900;
+$leaf-light-green: #5e9900;
+$leaf-yellow: #990;
+$leaf-yellow-dark: #564500;
+$leaf-border: #333;
+$leaf-shadow: #222;
+
+// Leaves animations for Hero section
+.hero-container {
+  position: relative;
+  overflow: hidden;
+  
+  #leaves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    pointer-events: none; // Make sure leaves don't interfere with clicking
+    
+    i {
+      position: absolute;
+      display: inline-block;
+      background: linear-gradient(to bottom right, $leaf-medium-green, $leaf-dark-green);
+      transform: skew(20deg);
+      border-radius: 5% 40% 70%;
+      box-shadow: inset 0px 0px 1px $leaf-shadow;
+      border: 1px solid $leaf-border;
+      opacity: 0.7;
+      transform: rotate(180deg);
+      
+      // Base leaf
+      height: 23px; 
+      width: 30px;
+      
+      &:before {
+        position: absolute;
+        content: '';
+        height: 5px;
+        width: 7px;
+        top: 17px;
+        right: 1px;
+        transform: rotate(49deg);
+        border-radius: 0% 15% 15% 0%;
+        border-top: 1px solid $leaf-shadow;
+        border-bottom: 1px solid $leaf-shadow;
+        border-right: 1px solid $leaf-shadow;
+        background: linear-gradient(to right, rgba(0,100,0,1), $leaf-dark-green);
+        z-index: 1;
+      }
+      
+      &:after {
+        content: '';
+        width: 2px;
+        height: 17px;
+        left: 12px;
+        top: 0px;
+        background: linear-gradient(to right, rgba(0,0,0,.15), rgba(0,0,0,0));
+        display: block;
+        transform: rotate(125deg);
+        position: absolute;
+        border-radius: 50%;
+      }
+      
+      // Small leaves
+      &:nth-of-type(2n+1) {
+        height: 11px;
+        width: 16px;
+        opacity: 0.5;
+        
+        &:before {
+          width: 4px;
+          height: 3px;
+          top: 7px;
+          right: 0px;
+        }
+        
+        &:after {
+          width: 2px;
+          height: 6px;
+          left: 5px;
+          top: 1px;
+        }
+      }
+      
+      // Medium leaves
+      &:nth-of-type(3n+2) {
+        height: 17px;
+        width: 23px;
+        opacity: 0.3;
+        
+        &:before {
+          height: 4px;
+          width: 4px;
+          top: 12px;
+          right: 1px;
+        }
+        
+        &:after {
+          height: 10px;
+          width: 2px;
+          top: 1px;
+          left: 8px;
+        }
+      }
+      
+      // Color variations
+      &:nth-of-type(2n+2) {
+        background: linear-gradient(to bottom right, $leaf-light-green, $leaf-dark-green);
+      }
+      
+      &:nth-of-type(4n+1) {
+        background: linear-gradient(to bottom right, $leaf-yellow, $leaf-yellow-dark);
+      }
+      
+      // Animation variations
+      animation: falling 5s infinite ease-in-out;
+      
+      &:nth-of-type(2n) {
+        animation: falling2 5s infinite ease-in-out;
+      }
+      
+      &:nth-of-type(3n) {
+        animation: falling3 5s infinite ease-in-out;
+      }
+    }
+  }
+  
+  // Animation delays - using a loop to optimize
+  @for $i from 1 through 50 {
+    #leaves i:nth-of-type(#{$i}n) {
+      animation-delay: #{($i * 0.3) % 5 + 1}s;
+    }
+  }
+}
+
+// Keyframe animations
+@keyframes falling {
+  0% {
+    transform: translate3d(300px, -50px, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-350px, 700px, 0) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes falling2 {
+  0% {
+    transform: translate3d(0, -50px, 0) rotate(90deg);
+  }
+  100% {
+    transform: translate3d(-400px, 680px, 0) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes falling3 {
+  0% {
+    transform: translate3d(0, -50px, 0) rotate(-20deg);
+  }
+  100% {
+    transform: translate3d(-230px, 640px, 0) rotate(-70deg);
+    opacity: 0;
+  }
+}

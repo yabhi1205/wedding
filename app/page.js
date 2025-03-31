@@ -1,22 +1,23 @@
-import Family from "@/components/Family";
-import Hero from "@/components/Hero";
-import Marriage from "@/components/Marriage";
-import Sagai from "@/components/Sagai";
+// import dynamic from 'next/dynamic';
+import Address from "@/components/Address";
+import FamilyDetailsList from "@/components/Family";
+import Footer from "@/components/Footer";
+// const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import PhotoSlider from "@/components/PhotoSlider";
 
 export default function Home() {
   return (
     <div>
-      <img src="/images/grass.png" className='fixed bottom-[59vh]  left-0 h-[60vh]' alt="" />
-      <img src="/images/grass.png" className='fixed bottom-0  left-0 h-[60vh]' alt="" />
-      <img src="/images/grass.png" className='fixed bottom-[59vh] right-0 h-[60vh] transform rotate-180' alt="" />
-      <img src="/images/grass.png" className='fixed bottom-0 right-0 h-[60vh] transform rotate-180' alt="" />
-      <div className="relative mx-10  ">
-        <Hero />
-        <Sagai />
-        <Marriage />
-        <Family />
+      <Hero />
+      <div className="relative mx-10">
+        {/* <Sagai /> */}
+        {/* <Marriage /> */}
+        <FamilyDetailsList />
+        <PhotoSlider />
+        <Address />
+        <Footer />
       </div>
     </div>
   );
