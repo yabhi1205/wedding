@@ -211,7 +211,7 @@ const Address = () => {
             {/* Address Details */}
             <div
               ref={detailsRef}
-              className="w-full md:w-2/5 bg-white !p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl relative opacity-0 transition-all duration-1000 translate-x-10 overflow-hidden"
+              className="w-full max-w-screen md:w-2/5 bg-white !p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl relative opacity-0 transition-all duration-1000 translate-x-10 overflow-hidden"
             >
               {/* Decorative Corner Embellishments */}
               <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 opacity-20">
